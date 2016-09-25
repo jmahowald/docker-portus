@@ -13,7 +13,7 @@ printenv
 # TODO figure out how to have this set to actual correct url most of the
 # time and allow me to more specfically override to look at my repositoriy
 PORTUS_GIT_URL=https://github.com/genesyslab/Portus.git
-PORTUS_VERSION=smtp
+PORTUS_VERSION=smtprelay
 
 docker build --build-arg PORTUS_VERSION=$PORTUS_VERSION --build-arg PORTUS_GIT_URL=$PORTUS_GIT_URL -t $IMAGE_NAME .
 
