@@ -9,8 +9,8 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ARG PORTUS_VERSION "master"
-ARG PORTUS_GIT_URL "https://github.com/SUSE/Portus.git"
+ARG PORTUS_VERSION=master
+ARG PORTUS_GIT_URL=https://github.com/SUSE/Portus.git
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES="1"
 
 #------------------------------------------------------------------------------
