@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+# H/T https://github.com/docker/hub-feedback/issues/508#issuecomment-240616319
+
+echo "------ HOOK START - BUILD -------"
+printenv
+
+build-arg PORTUS_VERSION=$SOURCE_BRANCH
+
+# TODO make this more data driven, i.e. from file
+# but the right answer may be to merge this into
+# Portus itselv
+
+# TODO figure out how to have this set to actual correct url most of the
+# time and allow me to more specfically override to look at my repositoriy
+PORTUS_GIT_URL=https://github.com/genesyslab/Portus.git
+PORTUS_VERSION=smtp
+
+docker build --build-arg PORTUS_VERSION=$PORTUS_VERSION --build-arg PORTUS_GIT_URL=$PORTUS_GIT_URL -t $IMAGE_NAME .
+
+echo "------ HOOK END - BUILD -------"

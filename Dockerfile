@@ -9,8 +9,9 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ENV PORTUS_VERSION="master" \
-    NOKOGIRI_USE_SYSTEM_LIBRARIES="1"
+ARG PORTUS_VERSION "master"
+ARG PORTUS_GIT_URL "https://github.com/SUSE/Portus.git"
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES="1"
 
 #------------------------------------------------------------------------------
 # Install:
@@ -22,7 +23,7 @@ RUN apk --no-cache add --update -t deps git gcc make musl-dev libxml2-dev \
     mariadb-libs mariadb-client openssl ruby-io-console ruby-bigdecimal \
     mariadb-client-libs libcurl \
     && echo 'gem: --verbose --no-document' > /etc/gemrc; cd /tmp \
-    && git clone https://github.com/SUSE/Portus.git . \
+    && git clone ${PORTUS_GIT_URL} . \
     && git checkout ${PORTUS_VERSION}; mkdir /portus \
     && git archive ${PORTUS_VERSION} | tar -xC /portus \
     && git rev-parse --short HEAD > /portus/VERSION; cd /portus \
